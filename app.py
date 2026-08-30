@@ -1,4 +1,6 @@
+import os
 from flask import Flask, render_template
+from database.models import db
 
 
 # =========================================
@@ -7,16 +9,10 @@ from flask import Flask, render_template
 
 app = Flask(__name__)
 
-# Secret key
-# -----------------------------------------
-# For development, this fallback value is
-# acceptable.
-#
-# Before deployment, we will put the real
-# secret key in an environment variable.
-# -----------------------------------------
 
-import os
+# =========================================
+# SECRET KEY
+# =========================================
 
 app.config["SECRET_KEY"] = os.environ.get(
     "SECRET_KEY",
@@ -25,32 +21,69 @@ app.config["SECRET_KEY"] = os.environ.get(
 
 
 # =========================================
+# DATABASE CONFIGURATION
+# =========================================
+
+# For development we can use SQLite.
+#
+# Later, when we deploy the system, we will
+# connect this application to PostgreSQL.
+
+database_url = os.environ.get(
+    "DATABASE_URL",
+    "sqlite:///library_membership.db"
+)
+
+# Some hosting platforms provide PostgreSQL
+# URLs beginning with postgres://.
+# SQLAlchemy expects postgresql://.
+
+if database_url.startswith("postgres://"):
+    database_url = database_url.replace(
+        "postgres://",
+        "postgresql://",
+        1
+    )
+
+app.config["SQLALCHEMY_DATABASE_URI"] = database_url
+
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+
+
+# =========================================
+# INITIALISE DATABASE
+# =========================================
+
+db.init_app(app)
+
+
+# =========================================
+# CREATE DATABASE TABLES
+# =========================================
+
+with app.app_context():
+    db.create_all()
+
+
+# =========================================
 # PUBLIC PAGES
 # =========================================
 
 @app.route("/")
 def home():
-    """
-    Membership system home page.
-    """
     return render_template("index.html")
 
 
 @app.route("/apply")
 def apply():
-    """
-    Membership application page.
-    """
     return render_template("apply.html")
 
 
 @app.route("/application-success")
 def application_success():
-    """
-    Page shown after an application has
-    successfully been submitted.
-    """
-    return render_template("application-success.html")
+    return render_template(
+        "application-success.html"
+    )
 
 
 # =========================================
@@ -59,21 +92,16 @@ def application_success():
 
 @app.route("/admin/login")
 def admin_login():
-    """
-    Librarian/admin login page.
-    """
-    return render_template("admin-login.html")
+    return render_template(
+        "admin-login.html"
+    )
 
 
 @app.route("/admin/dashboard")
 def admin_dashboard():
-    """
-    Librarian/admin dashboard.
-
-    Authentication will be added before
-    this page is used in production.
-    """
-    return render_template("admin-dashboard.html")
+    return render_template(
+        "admin-dashboard.html"
+    )
 
 
 # =========================================
