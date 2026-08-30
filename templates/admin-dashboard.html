@@ -1,1 +1,420 @@
+{% extends "base.html" %}
 
+
+{% block title %}
+Librarian Dashboard | Mmakau Community Library
+{% endblock %}
+
+
+{% block content %}
+
+
+<!-- =========================================
+     ADMIN DASHBOARD
+========================================= -->
+
+<section class="admin-section">
+
+    <div class="admin-container">
+
+
+        <!-- =================================
+             DASHBOARD HEADER
+        ================================== -->
+
+        <div class="admin-header">
+
+
+            <div>
+
+                <p class="section-label">
+                    LIBRARIAN PORTAL
+                </p>
+
+                <h1>
+                    Membership Applications
+                </h1>
+
+                <p>
+                    Review and manage membership
+                    applications submitted to the library.
+                </p>
+
+            </div>
+
+
+            <div class="admin-actions">
+
+                <a
+                    href="{{ url_for('admin_logout') }}"
+                    class="secondary-button dark-button"
+                >
+                    Log Out
+                </a>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             APPLICATION SUMMARY
+        ================================== -->
+
+        <div class="admin-summary">
+
+
+            <div class="summary-card">
+
+                <span class="summary-icon">
+                    📋
+                </span>
+
+                <div>
+
+                    <strong>
+                        {{ applications|length }}
+                    </strong>
+
+                    <span>
+                        Total Applications
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span class="summary-icon">
+                    ⏳
+                </span>
+
+                <div>
+
+                    <strong>
+                        {{ applications|selectattr("status", "equalto", "Pending")|list|length }}
+                    </strong>
+
+                    <span>
+                        Pending
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span class="summary-icon">
+                    ✓
+                </span>
+
+                <div>
+
+                    <strong>
+                        {{ applications|selectattr("status", "equalto", "Approved")|list|length }}
+                    </strong>
+
+                    <span>
+                        Approved
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="summary-card">
+
+                <span class="summary-icon">
+                    ✕
+                </span>
+
+                <div>
+
+                    <strong>
+                        {{ applications|selectattr("status", "equalto", "Rejected")|list|length }}
+                    </strong>
+
+                    <span>
+                        Rejected
+                    </span>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- =================================
+             APPLICATIONS
+        ================================== -->
+
+        <div class="applications-card">
+
+
+            <div class="applications-card-header">
+
+                <div>
+
+                    <h2>
+                        Applications
+                    </h2>
+
+                    <p>
+                        Review applicant information and
+                        update application status.
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            {% if applications %}
+
+
+                <div class="applications-list">
+
+
+                    {% for application in applications %}
+
+
+                        <article class="application-item">
+
+
+                            <!-- APPLICATION HEADER -->
+
+                            <div class="application-item-header">
+
+
+                                <div>
+
+                                    <h3>
+
+                                        {{ application.first_name }}
+                                        {{ application.last_name }}
+
+                                    </h3>
+
+                                    <p>
+
+                                        Application #
+                                        {{ application.id }}
+
+                                    </p>
+
+                                </div>
+
+
+                                <!-- STATUS -->
+
+                                <span
+                                    class="status-badge
+                                    {% if application.status == 'Approved' %}
+                                        approved
+                                    {% elif application.status == 'Rejected' %}
+                                        rejected
+                                    {% else %}
+                                        pending
+                                    {% endif %}"
+                                >
+
+                                    {{ application.status }}
+
+                                </span>
+
+
+                            </div>
+
+
+
+                            <!-- APPLICATION DETAILS -->
+
+                            <div class="application-details">
+
+
+                                <div>
+
+                                    <span>
+                                        Date of Birth
+                                    </span>
+
+                                    <strong>
+                                        {{ application.date_of_birth }}
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        ID Number
+                                    </span>
+
+                                    <strong>
+                                        {{ application.id_number }}
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Membership Type
+                                    </span>
+
+                                    <strong>
+                                        {{ application.membership_type }}
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Email
+                                    </span>
+
+                                    <strong>
+                                        {{ application.email }}
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Phone
+                                    </span>
+
+                                    <strong>
+                                        {{ application.phone }}
+                                    </strong>
+
+                                </div>
+
+
+                                <div>
+
+                                    <span>
+                                        Address
+                                    </span>
+
+                                    <strong>
+                                        {{ application.address }}
+                                    </strong>
+
+                                </div>
+
+
+                            </div>
+
+
+
+                            <!-- APPLICATION ACTIONS -->
+
+                            {% if application.status == "Pending" %}
+
+                                <div class="application-actions">
+
+
+                                    <form
+                                        method="POST"
+                                        action="{{ url_for(
+                                            'approve_application',
+                                            application_id=application.id
+                                        ) }}"
+                                    >
+
+                                        <button
+                                            type="submit"
+                                            class="approve-button"
+                                        >
+                                            ✓ Approve
+                                        </button>
+
+                                    </form>
+
+
+
+                                    <form
+                                        method="POST"
+                                        action="{{ url_for(
+                                            'reject_application',
+                                            application_id=application.id
+                                        ) }}"
+                                    >
+
+                                        <button
+                                            type="submit"
+                                            class="reject-button"
+                                        >
+                                            ✕ Reject
+                                        </button>
+
+                                    </form>
+
+
+                                </div>
+
+                            {% endif %}
+
+
+                        </article>
+
+
+                    {% endfor %}
+
+
+                </div>
+
+
+            {% else %}
+
+
+                <!-- NO APPLICATIONS -->
+
+                <div class="no-applications">
+
+                    <div class="no-applications-icon">
+                        📋
+                    </div>
+
+                    <h3>
+                        No Applications Yet
+                    </h3>
+
+                    <p>
+                        Membership applications submitted
+                        by users will appear here.
+                    </p>
+
+                </div>
+
+
+            {% endif %}
+
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+{% endblock %}
