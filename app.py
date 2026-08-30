@@ -361,13 +361,188 @@ def admin_login():
 @app.route("/admin/dashboard")
 def admin_dashboard():
 
+    # -----------------------------------------
+    # CHECK ADMIN LOGIN
+    # -----------------------------------------
+
     if not session.get("admin_logged_in"):
+
         return redirect(
             url_for("admin_login")
         )
 
+
+    # -----------------------------------------
+    # GET ALL APPLICATIONS
+    # -----------------------------------------
+
+    applications = (
+        MembershipApplication.query
+        .order_by(
+            MembershipApplication.id.desc()
+        )
+        .all()
+    )
+
+
+    # -----------------------------------------
+    # SHOW DASHBOARD
+    # -----------------------------------------
+
     return render_template(
-        "admin-dashboard.html"
+        "admin-dashboard.html",
+        applications=applications
+    )
+
+
+# =========================================
+# APPROVE APPLICATION
+# =========================================
+
+@app.route(
+    "/admin/application/<int:application_id>/approve",
+    methods=["POST"]
+)
+def approve_application(application_id):
+
+    # -----------------------------------------
+    # CHECK ADMIN LOGIN
+    # -----------------------------------------
+
+    if not session.get("admin_logged_in"):
+
+        return redirect(
+            url_for("admin_login")
+        )
+
+
+    # -----------------------------------------
+    # FIND APPLICATION
+    # -----------------------------------------
+
+    application = MembershipApplication.query.get_or_404(
+        application_id
+    )
+
+
+    # -----------------------------------------
+    # APPROVE APPLICATION
+    # -----------------------------------------
+
+    application.status = "Approved"
+
+
+    try:
+
+        db.session.commit()
+
+        flash(
+            "The membership application has been approved.",
+            "success"
+        )
+
+    except Exception:
+
+        db.session.rollback()
+
+        flash(
+            "Something went wrong while approving "
+            "the application.",
+            "error"
+        )
+
+
+    return redirect(
+        url_for("admin_dashboard")
+    )
+
+
+# =========================================
+# REJECT APPLICATION
+# =========================================
+
+@app.route(
+    "/admin/application/<int:application_id>/reject",
+    methods=["POST"]
+)
+def reject_application(application_id):
+
+    # -----------------------------------------
+    # CHECK ADMIN LOGIN
+    # -----------------------------------------
+
+    if not session.get("admin_logged_in"):
+
+        return redirect(
+            url_for("admin_login")
+        )
+
+
+    # -----------------------------------------
+    # FIND APPLICATION
+    # -----------------------------------------
+
+    application = MembershipApplication.query.get_or_404(
+        application_id
+    )
+
+
+    # -----------------------------------------
+    # REJECT APPLICATION
+    # -----------------------------------------
+
+    application.status = "Rejected"
+
+
+    try:
+
+        db.session.commit()
+
+        flash(
+            "The membership application has been rejected.",
+            "success"
+        )
+
+    except Exception:
+
+        db.session.rollback()
+
+        flash(
+            "Something went wrong while rejecting "
+            "the application.",
+            "error"
+        )
+
+
+    return redirect(
+        url_for("admin_dashboard")
+    )
+
+
+# =========================================
+# ADMIN LOGOUT
+# =========================================
+
+@app.route("/admin/logout")
+def admin_logout():
+
+    session.pop(
+        "admin_logged_in",
+        None
+    )
+
+    session.pop(
+        "admin_username",
+        None
+    )
+
+    flash(
+        "You have been logged out successfully.",
+        "success"
+    )
+
+    return redirect(
+        url_for("admin_login")
     )
 
 
