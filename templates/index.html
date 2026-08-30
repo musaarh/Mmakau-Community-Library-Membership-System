@@ -1,254 +1,1049 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <meta
+        name="description"
+        content="Mmakau Community Library - Opening hours, membership, library services, rules and contact information."
+    >
+
+    <title>
+        Mmakau Community Library
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
 
 
-{% block title %}
-
-Membership | Mmakau Community Library
-
-{% endblock %}
+<body>
 
 
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-{% block content %}
+    <nav class="navbar">
 
-
-<!-- =========================================
-     HERO
-========================================= -->
-
-<section class="portal-hero">
-
-    <div class="portal-hero-content">
-
-        <p class="section-label">
-            MEMBERSHIP
-        </p>
-
-        <h1>
-            Become a Member of
-            Mmakau Community Library
-        </h1>
-
-        <p>
-            Join your community library and gain access
-            to reading, learning and information resources.
-        </p>
-
-
-        <div class="hero-actions">
-
-            <a
-                href="{{ url_for('apply') }}"
-                class="primary-button"
-            >
-                Apply for Membership
-            </a>
+        <div class="nav-container">
 
             <a
                 href="{{ url_for('home') }}"
-                class="secondary-button"
+                class="nav-logo"
             >
-                Library Website
+                Mmakau Community Library
             </a>
 
+
+            <button
+                class="menu-button"
+                id="menuButton"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+            >
+                ☰
+            </button>
+
+
+            <div
+                class="nav-links"
+                id="navLinks"
+            >
+
+                <a href="#home">
+                    Home
+                </a>
+
+                <a href="#hours">
+                    Opening Hours
+                </a>
+
+                <a href="#membership">
+                    Membership
+                </a>
+
+                <a href="#services">
+                    Services
+                </a>
+
+                <a href="#rules">
+                    Rules
+                </a>
+
+                <a href="#contact">
+                    Contact
+                </a>
+
+            </div>
+
         </div>
 
-    </div>
-
-</section>
+    </nav>
 
 
 
-<!-- =========================================
-     APPLICATION INFORMATION
-========================================= -->
+    <!-- =========================
+         HERO / HOME
+    ========================== -->
 
-<section class="portal-section">
+    <main>
 
-    <div class="portal-container">
+        <section
+            id="home"
+            class="hero"
+        >
 
-        <div class="section-heading">
+            <div class="hero-content">
 
-            <p class="section-label">
-                HOW IT WORKS
-            </p>
-
-            <h2>
-                Applying is Simple
-            </h2>
-
-        </div>
+                <p class="small-heading">
+                    WELCOME TO
+                </p>
 
 
-        <div class="steps-grid">
+                <h1>
+                    Mmakau Community Library
+                </h1>
 
 
-            <div class="step-card">
+                <p class="hero-description">
 
-                <div class="step-icon">
-                    📝
+                    A place to read, learn, study,
+                    access information and connect
+                    with the community.
+
+                </p>
+
+
+                <div class="hero-buttons">
+
+                    <!-- CONNECTED TO FLASK MEMBERSHIP APPLICATION -->
+
+                    <a
+                        href="{{ url_for('apply') }}"
+                        class="button primary-button"
+                    >
+                        Become a Member
+                    </a>
+
+
+                    <a
+                        href="#hours"
+                        class="button secondary-button"
+                    >
+                        View Opening Hours
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             QUICK INFORMATION
+        ========================== -->
+
+        <section class="quick-info">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    🕘
                 </div>
 
                 <h3>
-                    1. Apply
+                    Opening Hours
                 </h3>
 
                 <p>
-                    Complete the online membership
-                    application form with your details.
+                    Monday – Friday
                 </p>
+
+                <strong>
+                    09:00 – 17:00
+                </strong>
 
             </div>
 
 
-            <div class="step-card">
+            <div class="info-card">
 
-                <div class="step-icon">
-                    🔎
+                <div class="info-icon">
+                    📚
                 </div>
 
                 <h3>
-                    2. Review
+                    Membership
                 </h3>
 
                 <p>
-                    Your application will be reviewed
-                    by the library.
+                    Children & Pensioners
                 </p>
 
-            </div>
-
-
-            <div class="step-card">
-
-                <div class="step-icon">
-                    📧
-                </div>
-
-                <h3>
-                    3. Get Notified
-                </h3>
-
-                <p>
-                    You will receive an email with the
-                    outcome of your application.
-                </p>
-
-            </div>
-
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =========================================
-     MEMBERSHIP TYPES
-========================================= -->
-
-<section class="portal-section light-section">
-
-    <div class="portal-container">
-
-        <div class="section-heading">
-
-            <p class="section-label">
-                MEMBERSHIP
-            </p>
-
-            <h2>
-                Membership Categories
-            </h2>
-
-        </div>
-
-
-        <div class="membership-grid">
-
-
-            <div class="portal-membership-card">
-
-                <div class="membership-icon">
-                    👧
-                </div>
-
-                <h3>
-                    Children
-                </h3>
-
-                <div class="portal-price">
+                <strong>
                     R16
-                </div>
-
-                <span>
-                    Annual membership
-                </span>
+                </strong>
 
             </div>
 
 
-            <div class="portal-membership-card featured">
+            <div class="info-card">
 
-                <div class="membership-icon">
+                <div class="info-icon">
                     👤
                 </div>
 
                 <h3>
-                    Adults
+                    Adult Membership
                 </h3>
 
-                <div class="portal-price">
+                <p>
+                    Annual membership
+                </p>
+
+                <strong>
                     R32
-                </div>
+                </strong>
 
-                <span>
-                    Annual membership
-                </span>
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             OPENING HOURS
+        ========================== -->
+
+        <section
+            id="hours"
+            class="section"
+        >
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    PLAN YOUR VISIT
+                </p>
+
+                <h2>
+                    Opening Hours
+                </h2>
+
+                <p>
+                    Check our regular library hours
+                    before visiting.
+                </p>
 
             </div>
 
 
-            <div class="portal-membership-card">
+            <div class="hours-container">
 
-                <div class="membership-icon">
-                    👵
+
+                <div class="hours-row">
+
+                    <span>
+                        Monday – Friday
+                    </span>
+
+                    <strong>
+                        09:00 – 17:00
+                    </strong>
+
                 </div>
 
-                <h3>
-                    Pensioners
-                </h3>
 
-                <div class="portal-price">
-                    R16
+                <div class="hours-row closed">
+
+                    <span>
+                        Saturday & Sunday
+                    </span>
+
+                    <strong>
+                        Closed
+                    </strong>
+
                 </div>
 
-                <span>
-                    Annual membership
-                </span>
+
+                <div class="hours-row closed">
+
+                    <span>
+                        Public Holidays
+                    </span>
+
+                    <strong>
+                        Closed
+                    </strong>
+
+                </div>
 
             </div>
 
 
-        </div>
-
-
-        <div class="center-action">
-
-            <a
-                href="{{ url_for('apply') }}"
-                class="primary-button"
+            <div
+                id="libraryStatus"
+                class="library-status"
             >
-                Start Your Application
-            </a>
 
-        </div>
+                <span
+                    id="statusDot"
+                    class="status-dot"
+                ></span>
 
-    </div>
+                <div>
 
-</section>
+                    <strong id="statusTitle">
+                        Checking library status...
+                    </strong>
+
+                    <p id="statusMessage">
+                        Please wait.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
 
 
-{% endblock %}
+
+        <!-- =========================
+             MEMBERSHIP
+        ========================== -->
+
+        <section
+            id="membership"
+            class="section light-section"
+        >
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    JOIN THE LIBRARY
+                </p>
+
+                <h2>
+                    Library Membership
+                </h2>
+
+                <p>
+                    Become a member and enjoy access
+                    to the library's resources,
+                    facilities and services.
+                </p>
+
+            </div>
+
+
+            <!-- MEMBERSHIP FEES -->
+
+            <div class="membership-cards">
+
+
+                <div class="membership-card">
+
+                    <div class="membership-icon">
+                        🎓
+                    </div>
+
+                    <h3>
+                        Children
+                    </h3>
+
+                    <p>
+                        Annual membership
+                    </p>
+
+                    <div class="price">
+                        R16
+                    </div>
+
+                    <span>
+                        per year
+                    </span>
+
+                </div>
+
+
+
+                <div class="membership-card featured">
+
+                    <div class="membership-icon">
+                        👤
+                    </div>
+
+                    <h3>
+                        Adults
+                    </h3>
+
+                    <p>
+                        Annual membership
+                    </p>
+
+                    <div class="price">
+                        R32
+                    </div>
+
+                    <span>
+                        per year
+                    </span>
+
+                </div>
+
+
+
+                <div class="membership-card">
+
+                    <div class="membership-icon">
+                        👵
+                    </div>
+
+                    <h3>
+                        Pensioners
+                    </h3>
+
+                    <p>
+                        Annual membership
+                    </p>
+
+                    <div class="price">
+                        R16
+                    </div>
+
+                    <span>
+                        per year
+                    </span>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- MEMBERSHIP APPLICATION BUTTON -->
+
+            <div
+                class="hero-buttons"
+                style="margin-top: 35px;"
+            >
+
+                <a
+                    href="{{ url_for('apply') }}"
+                    class="button primary-button"
+                >
+                    Apply for Membership
+                </a>
+
+            </div>
+
+
+
+            <!-- MEMBERSHIP ACCESS -->
+
+            <div class="membership-access">
+
+                <div class="section-heading">
+
+                    <p class="section-label">
+                        MEMBER BENEFITS
+                    </p>
+
+                    <h2>
+                        What Does Membership Give You Access To?
+                    </h2>
+
+                    <p>
+                        Your membership gives you access
+                        to the following library resources
+                        and facilities.
+                    </p>
+
+                </div>
+
+
+                <div class="benefits-grid">
+
+
+                    <div class="benefit-card">
+
+                        <div class="benefit-icon">
+                            📖
+                        </div>
+
+                        <h3>
+                            Borrow Library Books
+                        </h3>
+
+                        <p>
+                            Borrow books from the library's
+                            collection in accordance with
+                            the library's borrowing policy.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="benefit-card">
+
+                        <div class="benefit-icon">
+                            📶
+                        </div>
+
+                        <h3>
+                            Free Unlimited Wi-Fi
+                        </h3>
+
+                        <p>
+                            Stay connected with free,
+                            unlimited Wi-Fi while using
+                            the library.
+                        </p>
+
+                    </div>
+
+
+
+                    <div class="benefit-card">
+
+                        <div class="benefit-icon">
+                            💻
+                        </div>
+
+                        <h3>
+                            Access to Computers
+                        </h3>
+
+                        <p>
+                            Use the computers available
+                            at the library for learning,
+                            research and other needs.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             LIBRARY SERVICES
+        ========================== -->
+
+        <section
+            id="services"
+            class="section services-section"
+        >
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    LIBRARY SERVICES
+                </p>
+
+                <h2>
+                    Services & Pricing
+                </h2>
+
+                <p>
+                    Printing, photocopying and scanning
+                    services are available at the
+                    following rates.
+                </p>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PRINTING
+            ========================== -->
+
+            <div class="service-container">
+
+                <div class="service-header">
+
+                    <div class="service-icon">
+                        🖨️
+                    </div>
+
+                    <h3>
+                        Printing
+                    </h3>
+
+                    <p>
+                        Printing services are available
+                        in black & white and colour.
+                    </p>
+
+                </div>
+
+
+                <div class="pricing-table">
+
+                    <div class="pricing-row pricing-heading">
+
+                        <span>
+                            Size
+                        </span>
+
+                        <span>
+                            Black & White
+                        </span>
+
+                        <span>
+                            Colour
+                        </span>
+
+                    </div>
+
+
+                    <div class="pricing-row">
+
+                        <span>
+                            A4
+                        </span>
+
+                        <strong>
+                            R1.00
+                        </strong>
+
+                        <strong>
+                            R6.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="pricing-row">
+
+                        <span>
+                            A3
+                        </span>
+
+                        <strong>
+                            R3.00
+                        </strong>
+
+                        <strong>
+                            R9.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 PHOTOCOPYING
+            ========================== -->
+
+            <div class="service-container">
+
+                <div class="service-header">
+
+                    <div class="service-icon">
+                        📄
+                    </div>
+
+                    <h3>
+                        Photocopying
+                    </h3>
+
+                    <p>
+                        Photocopying services are available
+                        in black & white and colour.
+                    </p>
+
+                </div>
+
+
+                <div class="pricing-table">
+
+                    <div class="pricing-row pricing-heading">
+
+                        <span>
+                            Size
+                        </span>
+
+                        <span>
+                            Black & White
+                        </span>
+
+                        <span>
+                            Colour
+                        </span>
+
+                    </div>
+
+
+                    <div class="pricing-row">
+
+                        <span>
+                            A4
+                        </span>
+
+                        <strong>
+                            R1.00
+                        </strong>
+
+                        <strong>
+                            R6.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="pricing-row">
+
+                        <span>
+                            A3
+                        </span>
+
+                        <strong>
+                            R3.00
+                        </strong>
+
+                        <strong>
+                            R9.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- =========================
+                 SCANNING
+            ========================== -->
+
+            <div class="service-container">
+
+                <div class="service-header">
+
+                    <div class="service-icon">
+                        📑
+                    </div>
+
+                    <h3>
+                        Scanning
+                    </h3>
+
+                    <p>
+                        Scanning services are available
+                        in black & white and colour.
+                    </p>
+
+                </div>
+
+
+                <div class="pricing-table">
+
+                    <div class="pricing-row pricing-heading">
+
+                        <span>
+                            Size
+                        </span>
+
+                        <span>
+                            Black & White
+                        </span>
+
+                        <span>
+                            Colour
+                        </span>
+
+                    </div>
+
+
+                    <div class="pricing-row">
+
+                        <span>
+                            A4
+                        </span>
+
+                        <strong>
+                            R1.00
+                        </strong>
+
+                        <strong>
+                            R1.00
+                        </strong>
+
+                    </div>
+
+
+                    <div class="pricing-row">
+
+                        <span>
+                            A3
+                        </span>
+
+                        <strong>
+                            R3.00
+                        </strong>
+
+                        <strong>
+                            R3.00
+                        </strong>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- PRICING NOTE -->
+
+            <div class="pricing-note">
+
+                <strong>
+                    2026/2027 Pricing
+                </strong>
+
+                <p>
+                    Prices shown are applicable for
+                    the 2026/2027 period.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             LIBRARY RULES
+        ========================== -->
+
+        <section
+            id="rules"
+            class="section"
+        >
+
+            <div class="section-heading">
+
+                <p class="section-label">
+                    PLEASE OBSERVE
+                </p>
+
+                <h2>
+                    Library Rules
+                </h2>
+
+                <p>
+                    Help us maintain a quiet,
+                    comfortable and welcoming
+                    environment for everyone.
+                </p>
+
+            </div>
+
+
+            <div class="rules-list">
+
+
+                <div class="rule">
+
+                    <div class="rule-number">
+                        01
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Maintain Silence
+                        </h3>
+
+                        <p>
+                            Maintain silence at all times.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="rule">
+
+                    <div class="rule-number">
+                        02
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            Mobile Phones
+                        </h3>
+
+                        <p>
+                            Cell phones must be on
+                            silent or vibration.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="rule">
+
+                    <div class="rule-number">
+                        03
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            No Eating
+                        </h3>
+
+                        <p>
+                            Eating is not permitted
+                            inside the library.
+                        </p>
+
+                    </div>
+
+                </div>
+
+
+
+                <div class="rule">
+
+                    <div class="rule-number">
+                        04
+                    </div>
+
+                    <div>
+
+                        <h3>
+                            No Drinking
+                        </h3>
+
+                        <p>
+                            Drinking is not permitted
+                            inside the library.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =========================
+             CONTACT
+        ========================== -->
+
+        <section
+            id="contact"
+            class="contact-section"
+        >
+
+            <div class="contact-content">
+
+                <p class="section-label">
+                    HAVE A QUESTION?
+                </p>
+
+                <h2>
+                    Contact Mmakau Community Library
+                </h2>
+
+                <p>
+                    For enquiries, please contact the
+                    library by email or via WhatsApp.
+                </p>
+
+
+                <a
+                    href="mailto:mmakaulibrary@gmail.com"
+                    class="email-button"
+                >
+                    mmakaulibrary@gmail.com
+                </a>
+
+            </div>
+
+
+            <!-- WhatsApp Contact -->
+
+            <div class="whatsapp-contact">
+
+                <a
+                    href="https://wa.me/27679601395"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="whatsapp-button"
+                >
+
+                    <span class="whatsapp-icon">
+                        💬
+                    </span>
+
+                    Chat with us on WhatsApp
+
+                </a>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+
+    <!-- =========================
+         FOOTER
+    ========================== -->
+
+    <div id="footer"></div>
+
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script
+        src="{{ url_for('static', filename='js/script.js') }}"
+    ></script>
+
+</body>
+
+</html>
