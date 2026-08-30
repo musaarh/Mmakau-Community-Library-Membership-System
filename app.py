@@ -322,13 +322,36 @@ def application_success():
 # ADMIN LOGIN
 # =========================================
 
-@app.route("/admin/login")
+@app.route("/admin/login", methods=["GET", "POST"])
 def admin_login():
+
+    if request.method == "POST":
+
+        username = request.form.get("username", "").strip()
+        password = request.form.get("password", "")
+
+        admin_username = os.environ.get("ADMIN_USERNAME")
+        admin_password_hash = os.environ.get("ADMIN_PASSWORD_HASH")
+
+        if (
+            admin_username
+            and admin_password_hash
+            and username == admin_username
+            and check_password_hash(admin_password_hash, password)
+        ):
+            session["admin_logged_in"] = True
+            session["admin_username"] = username
+
+            return redirect(url_for("admin_dashboard"))
+
+        return render_template(
+            "admin-login.html",
+            error="Invalid username or password."
+        )
 
     return render_template(
         "admin-login.html"
     )
-
 
 # =========================================
 # ADMIN DASHBOARD
