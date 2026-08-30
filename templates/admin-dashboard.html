@@ -96,7 +96,7 @@ Librarian Dashboard | Mmakau Community Library
                 <div>
 
                     <strong>
-                        {{ applications|selectattr("status", "equalto", "Pending")|list|length }}
+                        {{ pending_count }}
                     </strong>
 
                     <span>
@@ -117,7 +117,7 @@ Librarian Dashboard | Mmakau Community Library
                 <div>
 
                     <strong>
-                        {{ applications|selectattr("status", "equalto", "Approved")|list|length }}
+                        {{ approved_count }}
                     </strong>
 
                     <span>
@@ -138,7 +138,7 @@ Librarian Dashboard | Mmakau Community Library
                 <div>
 
                     <strong>
-                        {{ applications|selectattr("status", "equalto", "Rejected")|list|length }}
+                        {{ rejected_count }}
                     </strong>
 
                     <span>
