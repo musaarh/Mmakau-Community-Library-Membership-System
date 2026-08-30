@@ -1,1 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Application Received | Mmakau Community Library
+    </title>
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<header class="site-header">
+
+    <div class="header-container">
+
+        <a
+            href="{{ url_for('home') }}"
+            class="logo"
+        >
+            Mmakau Community Library
+        </a>
+
+    </div>
+
+</header>
+
+
+
+<main class="application-page">
+
+    <div
+        class="application-container"
+        style="text-align: center;"
+    >
+
+        <div
+            class="membership-form"
+            style="padding: 55px 30px;"
+        >
+
+            <div style="font-size: 4rem;">
+                ✅
+            </div>
+
+
+            <p class="section-label">
+                APPLICATION RECEIVED
+            </p>
+
+
+            <h1
+                style="
+                    font-family: Georgia, serif;
+                    color: #20364d;
+                    font-size: 2.7rem;
+                "
+            >
+                Thank You!
+            </h1>
+
+
+            <p
+                style="
+                    color: #687780;
+                    font-size: 1.1rem;
+                    line-height: 1.7;
+                    max-width: 650px;
+                    margin: 20px auto;
+                "
+            >
+                Your library membership application has
+                been successfully received by Mmakau
+                Community Library.
+            </p>
+
+
+            <p
+                style="
+                    color: #687780;
+                    line-height: 1.7;
+                    max-width: 650px;
+                    margin: 0 auto 30px;
+                "
+            >
+                Your application will be reviewed by the
+                library. Once a decision has been made,
+                you will receive an email with further
+                information.
+            </p>
+
+
+            <a
+                href="{{ url_for('home') }}"
+                class="submit-button"
+                style="
+                    display: inline-block;
+                    text-decoration: none;
+                "
+            >
+                Return to Library Website
+            </a>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+
+<footer class="simple-footer">
+
+    <p>
+        © {{ current_year }}
+        Mmakau Community Library.
+        All rights reserved.
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>
