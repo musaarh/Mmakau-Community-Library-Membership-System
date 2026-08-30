@@ -2,382 +2,352 @@
 
 
 {% block title %}
-
 Membership Application | Mmakau Community Library
-
 {% endblock %}
-
 
 
 {% block content %}
 
 
-<section class="application-section">
+<!-- =========================================
+     APPLICATION HERO
+========================================= -->
 
-    <div class="application-container">
+<section class="portal-hero">
+
+    <div class="portal-hero-content">
+
+        <p class="section-label">
+            LIBRARY MEMBERSHIP
+        </p>
+
+        <h1>
+            Apply for Membership
+        </h1>
+
+        <p>
+            Complete the form below to apply for
+            membership at Mmakau Community Library.
+        </p>
+
+    </div>
+
+</section>
 
 
-        <!-- =====================================
-             INTRO
-        ====================================== -->
 
-        <div class="section-heading application-heading">
+<!-- =========================================
+     APPLICATION FORM
+========================================= -->
+
+<section class="portal-section">
+
+    <div class="portal-container">
+
+
+        <div class="section-heading">
 
             <p class="section-label">
-                JOIN THE LIBRARY
+                MEMBERSHIP APPLICATION
             </p>
 
-            <h1>
-                Membership Application
-            </h1>
+            <h2>
+                Your Details
+            </h2>
 
             <p>
-                Complete the form below to apply for
-                membership at Mmakau Community Library.
+                Please provide accurate information.
+                Your application will be reviewed by
+                the library.
             </p>
 
         </div>
 
 
 
-        <!-- =====================================
-             FORM
-        ====================================== -->
-
-        <form
-            method="POST"
-            action="{{ url_for('apply') }}"
-            class="membership-form"
-        >
+        <div class="application-form-card">
 
 
-            <!-- PERSONAL INFORMATION -->
-
-            <div class="form-section">
-
-                <h2>
-                    Personal Information
-                </h2>
-
-                <p class="form-description">
-                    Please provide your personal details.
-                </p>
+            <form
+                method="POST"
+                action="{{ url_for('apply') }}"
+            >
 
 
-                <div class="form-grid">
+                <!-- =================================
+                     PERSONAL INFORMATION
+                ================================== -->
+
+                <div class="form-section">
+
+                    <h3>
+                        Personal Information
+                    </h3>
 
 
-                    <div class="form-group">
+                    <div class="form-grid">
 
-                        <label for="first_name">
-                            First Name *
-                        </label>
 
-                        <input
-                            type="text"
-                            id="first_name"
-                            name="first_name"
-                            required
-                            autocomplete="given-name"
-                        >
+                        <!-- FIRST NAME -->
+
+                        <div class="form-group">
+
+                            <label for="first_name">
+                                First Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="first_name"
+                                name="first_name"
+                                autocomplete="given-name"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- LAST NAME -->
+
+                        <div class="form-group">
+
+                            <label for="last_name">
+                                Last Name
+                            </label>
+
+                            <input
+                                type="text"
+                                id="last_name"
+                                name="last_name"
+                                autocomplete="family-name"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- DATE OF BIRTH -->
+
+                        <div class="form-group">
+
+                            <label for="date_of_birth">
+                                Date of Birth
+                            </label>
+
+                            <input
+                                type="date"
+                                id="date_of_birth"
+                                name="date_of_birth"
+                                autocomplete="bday"
+                                required
+                            >
+
+                        </div>
+
+
+
+                        <!-- ID NUMBER -->
+
+                        <div class="form-group">
+
+                            <label for="id_number">
+                                ID Number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="id_number"
+                                name="id_number"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
 
                     </div>
-
-
-                    <div class="form-group">
-
-                        <label for="last_name">
-                            Last Name *
-                        </label>
-
-                        <input
-                            type="text"
-                            id="last_name"
-                            name="last_name"
-                            required
-                            autocomplete="family-name"
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="date_of_birth">
-                            Date of Birth *
-                        </label>
-
-                        <input
-                            type="date"
-                            id="date_of_birth"
-                            name="date_of_birth"
-                            required
-                        >
-
-                    </div>
-
-
-                    <div class="form-group">
-
-                        <label for="id_number">
-                            ID / Passport Number *
-                        </label>
-
-                        <input
-                            type="text"
-                            id="id_number"
-                            name="id_number"
-                            required
-                            autocomplete="off"
-                        >
-
-                    </div>
-
 
                 </div>
 
-            </div>
+
+
+                <!-- =================================
+                     CONTACT INFORMATION
+                ================================== -->
+
+                <div class="form-section">
+
+                    <h3>
+                        Contact Information
+                    </h3>
+
+
+                    <div class="form-grid">
+
+
+                        <!-- EMAIL -->
+
+                        <div class="form-group">
+
+                            <label for="email">
+                                Email Address
+                            </label>
+
+                            <input
+                                type="email"
+                                id="email"
+                                name="email"
+                                autocomplete="email"
+                                placeholder="you@example.com"
+                                required
+                            >
+
+                        </div>
 
 
 
-            <!-- CONTACT -->
+                        <!-- PHONE -->
 
-            <div class="form-section">
+                        <div class="form-group">
 
-                <h2>
-                    Contact Information
-                </h2>
+                            <label for="phone">
+                                Phone Number
+                            </label>
 
-                <p class="form-description">
-                    These details will be used to communicate
-                    with you about your application.
-                </p>
+                            <input
+                                type="tel"
+                                id="phone"
+                                name="phone"
+                                autocomplete="tel"
+                                placeholder="e.g. 067 960 1395"
+                                required
+                            >
 
+                        </div>
 
-                <div class="form-grid">
-
-
-                    <div class="form-group">
-
-                        <label for="email">
-                            Email Address *
-                        </label>
-
-                        <input
-                            type="email"
-                            id="email"
-                            name="email"
-                            required
-                            autocomplete="email"
-                        >
 
                     </div>
 
 
+
+                    <!-- ADDRESS -->
+
                     <div class="form-group">
 
-                        <label for="phone">
-                            Phone Number *
+                        <label for="address">
+                            Residential Address
                         </label>
 
-                        <input
-                            type="tel"
-                            id="phone"
-                            name="phone"
-                            placeholder="+27 XX XXX XXXX"
+                        <textarea
+                            id="address"
+                            name="address"
+                            rows="4"
+                            autocomplete="street-address"
                             required
-                            autocomplete="tel"
-                        >
+                        ></textarea>
 
                     </div>
 
-
                 </div>
 
-            </div>
 
 
+                <!-- =================================
+                     MEMBERSHIP TYPE
+                ================================== -->
 
-            <!-- ADDRESS -->
+                <div class="form-section">
 
-            <div class="form-section">
-
-                <h2>
-                    Residential Address
-                </h2>
-
-                <p class="form-description">
-                    Please provide your current residential
-                    address.
-                </p>
+                    <h3>
+                        Membership Type
+                    </h3>
 
 
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label for="address">
-                        Address *
-                    </label>
+                        <label for="membership_type">
+                            Select Membership Category
+                        </label>
 
-                    <textarea
-                        id="address"
-                        name="address"
-                        rows="4"
-                        required
-                    ></textarea>
-
-                </div>
-
-            </div>
-
-
-
-            <!-- MEMBERSHIP -->
-
-            <div class="form-section">
-
-                <h2>
-                    Membership Type
-                </h2>
-
-                <p class="form-description">
-                    Select the membership category that
-                    applies to you.
-                </p>
-
-
-                <div class="membership-options">
-
-
-                    <label class="membership-option">
-
-                        <input
-                            type="radio"
+                        <select
+                            id="membership_type"
                             name="membership_type"
-                            value="Children"
                             required
                         >
 
-                        <span>
+                            <option value="">
+                                -- Select membership type --
+                            </option>
 
-                            <strong>
-                                Children
-                            </strong>
+                            <option value="Children">
+                                Children — R16 per year
+                            </option>
 
-                            <small>
-                                Annual membership — R16
-                            </small>
+                            <option value="Adults">
+                                Adults — R32 per year
+                            </option>
 
-                        </span>
+                            <option value="Pensioners">
+                                Pensioners — R16 per year
+                            </option>
 
-                    </label>
+                        </select>
 
-
-
-                    <label class="membership-option">
-
-                        <input
-                            type="radio"
-                            name="membership_type"
-                            value="Adults"
-                            required
-                        >
-
-                        <span>
-
-                            <strong>
-                                Adults
-                            </strong>
-
-                            <small>
-                                Annual membership — R32
-                            </small>
-
-                        </span>
-
-                    </label>
-
-
-
-                    <label class="membership-option">
-
-                        <input
-                            type="radio"
-                            name="membership_type"
-                            value="Pensioners"
-                            required
-                        >
-
-                        <span>
-
-                            <strong>
-                                Pensioners
-                            </strong>
-
-                            <small>
-                                Annual membership — R16
-                            </small>
-
-                        </span>
-
-                    </label>
-
+                    </div>
 
                 </div>
 
-            </div>
+
+
+                <!-- =================================
+                     INFORMATION NOTICE
+                ================================== -->
+
+                <div class="application-notice">
+
+                    <strong>
+                        Before submitting
+                    </strong>
+
+                    <p>
+                        Please make sure that all the
+                        information you have provided is
+                        correct. Your application will be
+                        reviewed by the library.
+                    </p>
+
+                </div>
 
 
 
-            <!-- DECLARATION -->
+                <!-- =================================
+                     SUBMIT
+                ================================== -->
 
-            <div class="form-section declaration-section">
+                <div class="form-actions">
 
-                <h2>
-                    Declaration
-                </h2>
-
-
-                <label class="checkbox-group">
-
-                    <input
-                        type="checkbox"
-                        name="declaration"
-                        required
+                    <button
+                        type="submit"
+                        class="primary-button"
                     >
-
-                    <span>
-                        I confirm that the information provided
-                        in this application is true and correct.
-                        I understand that my application will be
-                        reviewed by Mmakau Community Library.
-                    </span>
-
-                </label>
-
-            </div>
+                        Submit Application
+                    </button>
 
 
+                    <a
+                        href="{{ url_for('home') }}"
+                        class="secondary-button dark-button"
+                    >
+                        Cancel
+                    </a>
 
-            <!-- SUBMIT -->
-
-            <div class="form-submit">
-
-                <button
-                    type="submit"
-                    class="primary-button"
-                >
-                    Submit Application
-                </button>
-
-                <p>
-                    Your application will be reviewed by
-                    the library.
-                </p>
-
-            </div>
+                </div>
 
 
-        </form>
+            </form>
+
+        </div>
 
     </div>
 
