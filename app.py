@@ -361,6 +361,11 @@ def admin_login():
 @app.route("/admin/dashboard")
 def admin_dashboard():
 
+    if not session.get("admin_logged_in"):
+        return redirect(
+            url_for("admin_login")
+        )
+
     return render_template(
         "admin-dashboard.html"
     )
