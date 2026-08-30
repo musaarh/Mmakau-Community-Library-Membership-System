@@ -7,7 +7,8 @@ from flask import (
     request,
     redirect,
     url_for,
-    flash
+    flash,
+    session
 )
 
 from werkzeug.security import check_password_hash
