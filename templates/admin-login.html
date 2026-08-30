@@ -1,1 +1,90 @@
+{% extends "base.html" %}
 
+{% block title %}Librarian Login | Mmakau Community Library{% endblock %}
+
+{% block content %}
+
+<section class="auth-section">
+
+    <div class="auth-container">
+
+        <div class="section-heading">
+
+            <p class="eyebrow">
+                LIBRARIAN ACCESS
+            </p>
+
+            <h1>
+                Librarian Login
+            </h1>
+
+            <p>
+                Sign in to securely manage library membership applications.
+            </p>
+
+        </div>
+
+
+        <div class="auth-card">
+
+            <form method="POST" action="{{ url_for('admin_login') }}">
+
+                <div class="form-group">
+
+                    <label for="username">
+                        Username
+                    </label>
+
+                    <input
+                        type="text"
+                        id="username"
+                        name="username"
+                        autocomplete="username"
+                        required
+                    >
+
+                </div>
+
+
+                <div class="form-group">
+
+                    <label for="password">
+                        Password
+                    </label>
+
+                    <input
+                        type="password"
+                        id="password"
+                        name="password"
+                        autocomplete="current-password"
+                        required
+                    >
+
+                </div>
+
+
+                {% if error %}
+
+                <div class="form-error">
+                    {{ error }}
+                </div>
+
+                {% endif %}
+
+
+                <button
+                    type="submit"
+                    class="primary-button"
+                >
+                    Log In
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</section>
+
+{% endblock %}
