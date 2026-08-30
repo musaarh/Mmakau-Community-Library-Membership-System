@@ -10,6 +10,7 @@ from flask import (
     flash
 )
 
+from werkzeug.security import check_password_hash
 from database.models import db, MembershipApplication
 
 
