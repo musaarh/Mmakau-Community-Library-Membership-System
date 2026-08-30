@@ -1,1 +1,254 @@
+{% extends "base.html" %}
 
+
+{% block title %}
+
+Membership | Mmakau Community Library
+
+{% endblock %}
+
+
+
+{% block content %}
+
+
+<!-- =========================================
+     HERO
+========================================= -->
+
+<section class="portal-hero">
+
+    <div class="portal-hero-content">
+
+        <p class="section-label">
+            MEMBERSHIP
+        </p>
+
+        <h1>
+            Become a Member of
+            Mmakau Community Library
+        </h1>
+
+        <p>
+            Join your community library and gain access
+            to reading, learning and information resources.
+        </p>
+
+
+        <div class="hero-actions">
+
+            <a
+                href="{{ url_for('apply') }}"
+                class="primary-button"
+            >
+                Apply for Membership
+            </a>
+
+            <a
+                href="{{ url_for('home') }}"
+                class="secondary-button"
+            >
+                Library Website
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     APPLICATION INFORMATION
+========================================= -->
+
+<section class="portal-section">
+
+    <div class="portal-container">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                HOW IT WORKS
+            </p>
+
+            <h2>
+                Applying is Simple
+            </h2>
+
+        </div>
+
+
+        <div class="steps-grid">
+
+
+            <div class="step-card">
+
+                <div class="step-icon">
+                    📝
+                </div>
+
+                <h3>
+                    1. Apply
+                </h3>
+
+                <p>
+                    Complete the online membership
+                    application form with your details.
+                </p>
+
+            </div>
+
+
+            <div class="step-card">
+
+                <div class="step-icon">
+                    🔎
+                </div>
+
+                <h3>
+                    2. Review
+                </h3>
+
+                <p>
+                    Your application will be reviewed
+                    by the library.
+                </p>
+
+            </div>
+
+
+            <div class="step-card">
+
+                <div class="step-icon">
+                    📧
+                </div>
+
+                <h3>
+                    3. Get Notified
+                </h3>
+
+                <p>
+                    You will receive an email with the
+                    outcome of your application.
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================================
+     MEMBERSHIP TYPES
+========================================= -->
+
+<section class="portal-section light-section">
+
+    <div class="portal-container">
+
+        <div class="section-heading">
+
+            <p class="section-label">
+                MEMBERSHIP
+            </p>
+
+            <h2>
+                Membership Categories
+            </h2>
+
+        </div>
+
+
+        <div class="membership-grid">
+
+
+            <div class="portal-membership-card">
+
+                <div class="membership-icon">
+                    👧
+                </div>
+
+                <h3>
+                    Children
+                </h3>
+
+                <div class="portal-price">
+                    R16
+                </div>
+
+                <span>
+                    Annual membership
+                </span>
+
+            </div>
+
+
+            <div class="portal-membership-card featured">
+
+                <div class="membership-icon">
+                    👤
+                </div>
+
+                <h3>
+                    Adults
+                </h3>
+
+                <div class="portal-price">
+                    R32
+                </div>
+
+                <span>
+                    Annual membership
+                </span>
+
+            </div>
+
+
+            <div class="portal-membership-card">
+
+                <div class="membership-icon">
+                    👵
+                </div>
+
+                <h3>
+                    Pensioners
+                </h3>
+
+                <div class="portal-price">
+                    R16
+                </div>
+
+                <span>
+                    Annual membership
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="center-action">
+
+            <a
+                href="{{ url_for('apply') }}"
+                class="primary-button"
+            >
+                Start Your Application
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+{% endblock %}
