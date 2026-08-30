@@ -1,1 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        {% block title %}
+        Mmakau Community Library
+        {% endblock %}
+    </title>
+
+    <meta
+        name="description"
+        content="Mmakau Community Library membership system."
+    >
+
+    <link
+        rel="stylesheet"
+        href="{{ url_for('static', filename='css/style.css') }}"
+    >
+
+</head>
+
+
+<body>
+
+
+<!-- =========================================
+     HEADER
+========================================= -->
+
+<header class="site-header">
+
+    <div class="header-container">
+
+        <a
+            href="{{ url_for('home') }}"
+            class="site-logo"
+        >
+
+            <span class="logo-icon">
+                📚
+            </span>
+
+            <span>
+                Mmakau Community Library
+            </span>
+
+        </a>
+
+
+        <nav class="portal-navigation">
+
+            <a href="{{ url_for('home') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('apply') }}">
+                Apply for Membership
+            </a>
+
+        </nav>
+
+    </div>
+
+</header>
+
+
+
+<!-- =========================================
+     FLASH MESSAGES
+========================================= -->
+
+{% with messages = get_flashed_messages(
+    with_categories=true
+) %}
+
+    {% if messages %}
+
+        <div class="flash-wrapper">
+
+            {% for category, message in messages %}
+
+                <div class="flash-message {{ category }}">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% endif %}
+
+{% endwith %}
+
+
+
+<!-- =========================================
+     PAGE CONTENT
+========================================= -->
+
+{% block content %}
+
+{% endblock %}
+
+
+
+<!-- =========================================
+     FOOTER
+========================================= -->
+
+<footer>
+
+    <div class="footer-container">
+
+
+        <!-- LIBRARY -->
+
+        <div>
+
+            <h3>
+                Mmakau Community Library
+            </h3>
+
+            <p>
+                Serving the community through
+                reading, learning and access
+                to information.
+            </p>
+
+        </div>
+
+
+        <!-- QUICK LINKS -->
+
+        <div>
+
+            <h4>
+                Quick Links
+            </h4>
+
+            <a href="{{ url_for('home') }}">
+                Home
+            </a>
+
+            <a href="{{ url_for('apply') }}">
+                Membership Application
+            </a>
+
+            <a href="{{ url_for('admin_login') }}">
+                Librarian Login
+            </a>
+
+        </div>
+
+
+        <!-- CONTACT -->
+
+        <div>
+
+            <h4>
+                Contact
+            </h4>
+
+            <a href="mailto:mmakaulibrary@gmail.com">
+                mmakaulibrary@gmail.com
+            </a>
+
+            <a
+                href="https://wa.me/27679601395"
+                target="_blank"
+                rel="noopener noreferrer"
+            >
+                WhatsApp: Chat with us
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <div class="footer-bottom">
+
+        <p>
+            © {{ current_year }}
+            Mmakau Community Library.
+            All rights reserved.
+        </p>
+
+    </div>
+
+</footer>
+
+
+</body>
+
+</html>
