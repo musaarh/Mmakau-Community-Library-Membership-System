@@ -1,140 +1,79 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "base.html" %}
 
-<head>
+{% block title %}
+Application Received | Mmakau Community Library
+{% endblock %}
 
-    <meta charset="UTF-8">
+{% block content %}
 
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
+<section class="application-section">
 
-    <title>
-        Application Received | Mmakau Community Library
-    </title>
+    <div class="application-container">
 
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}"
-    >
+        <div class="success-card">
 
-</head>
-
-
-<body>
-
-
-<header class="site-header">
-
-    <div class="header-container">
-
-        <a
-            href="{{ url_for('home') }}"
-            class="logo"
-        >
-            Mmakau Community Library
-        </a>
-
-    </div>
-
-</header>
-
-
-
-<main class="application-page">
-
-    <div
-        class="application-container"
-        style="text-align: center;"
-    >
-
-        <div
-            class="membership-form"
-            style="padding: 55px 30px;"
-        >
-
-            <div style="font-size: 4rem;">
-                ✅
+            <div class="success-icon">
+                ✓
             </div>
-
 
             <p class="section-label">
                 APPLICATION RECEIVED
             </p>
 
-
-            <h1
-                style="
-                    font-family: Georgia, serif;
-                    color: #20364d;
-                    font-size: 2.7rem;
-                "
-            >
-                Thank You!
+            <h1>
+                Thank You for Applying!
             </h1>
 
-
-            <p
-                style="
-                    color: #687780;
-                    font-size: 1.1rem;
-                    line-height: 1.7;
-                    max-width: 650px;
-                    margin: 20px auto;
-                "
-            >
-                Your library membership application has
-                been successfully received by Mmakau
-                Community Library.
+            <p class="success-message">
+                Your membership application has been
+                successfully received by Mmakau Community
+                Library.
             </p>
 
-
-            <p
-                style="
-                    color: #687780;
-                    line-height: 1.7;
-                    max-width: 650px;
-                    margin: 0 auto 30px;
-                "
-            >
-                Your application will be reviewed by the
-                library. Once a decision has been made,
-                you will receive an email with further
-                information.
+            <p class="success-message">
+                The library will review your application.
+                You will receive an email with an update
+                once a decision has been made.
             </p>
 
+            <div class="success-note">
 
-            <a
-                href="{{ url_for('home') }}"
-                class="submit-button"
-                style="
-                    display: inline-block;
-                    text-decoration: none;
-                "
-            >
-                Return to Library Website
-            </a>
+                <strong>
+                    What happens next?
+                </strong>
+
+                <p>
+                    Your application will be reviewed by
+                    the librarian. If your application is
+                    approved, the library will provide you
+                    with further information about your
+                    membership.
+                </p>
+
+            </div>
+
+            <div class="success-actions">
+
+                <a
+                    href="{{ url_for('home') }}"
+                    class="primary-button"
+                >
+                    Back to Membership Portal
+                </a>
+
+                <a
+                    href="{{ url_for('apply') }}"
+                    class="secondary-button dark-button"
+                >
+                    Submit Another Application
+                </a>
+
+            </div>
 
         </div>
 
     </div>
 
-</main>
+</section>
 
-
-
-<footer class="simple-footer">
-
-    <p>
-        © {{ current_year }}
-        Mmakau Community Library.
-        All rights reserved.
-    </p>
-
-</footer>
-
-
-</body>
-
-</html>
+{% endblock %}
