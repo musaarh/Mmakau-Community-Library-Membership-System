@@ -1,78 +1,34 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-
-    <meta charset="UTF-8">
-
-    <meta
-        name="viewport"
-        content="width=device-width, initial-scale=1.0"
-    >
-
-    <title>
-        Apply for Membership | Mmakau Community Library
-    </title>
-
-    <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/style.css') }}"
-    >
-
-</head>
+{% extends "base.html" %}
 
 
-<body>
+{% block title %}
 
+Membership Application | Mmakau Community Library
 
-<!-- =========================================
-     HEADER
-========================================= -->
-
-<header class="site-header">
-
-    <div class="header-container">
-
-        <a
-            href="{{ url_for('home') }}"
-            class="logo"
-        >
-            Mmakau Community Library
-        </a>
-
-
-        <a
-            href="{{ url_for('home') }}"
-            class="back-link"
-        >
-            ← Back to Home
-        </a>
-
-    </div>
-
-</header>
+{% endblock %}
 
 
 
-<!-- =========================================
-     APPLICATION SECTION
-========================================= -->
+{% block content %}
 
-<main class="application-page">
+
+<section class="application-section">
 
     <div class="application-container">
 
 
-        <!-- INTRODUCTION -->
+        <!-- =====================================
+             INTRO
+        ====================================== -->
 
-        <div class="application-intro">
+        <div class="section-heading application-heading">
 
             <p class="section-label">
                 JOIN THE LIBRARY
             </p>
 
             <h1>
-                Library Membership Application
+                Membership Application
             </h1>
 
             <p>
@@ -80,44 +36,13 @@
                 membership at Mmakau Community Library.
             </p>
 
-            <p class="required-note">
-                Fields marked with <strong>*</strong>
-                are required.
-            </p>
-
         </div>
 
 
 
-        <!-- FLASH MESSAGES -->
-
-        {% with messages = get_flashed_messages(
-            with_categories=true
-        ) %}
-
-            {% if messages %}
-
-                <div class="flash-container">
-
-                    {% for category, message in messages %}
-
-                        <div
-                            class="flash-message {{ category }}"
-                        >
-                            {{ message }}
-                        </div>
-
-                    {% endfor %}
-
-                </div>
-
-            {% endif %}
-
-        {% endwith %}
-
-
-
-        <!-- APPLICATION FORM -->
+        <!-- =====================================
+             FORM
+        ====================================== -->
 
         <form
             method="POST"
@@ -126,25 +51,21 @@
         >
 
 
-            <!-- =================================
-                 PERSONAL INFORMATION
-            ================================== -->
+            <!-- PERSONAL INFORMATION -->
 
-            <section class="form-section">
+            <div class="form-section">
 
                 <h2>
                     Personal Information
                 </h2>
 
-                <p class="form-section-description">
+                <p class="form-description">
                     Please provide your personal details.
                 </p>
 
 
                 <div class="form-grid">
 
-
-                    <!-- FIRST NAME -->
 
                     <div class="form-group">
 
@@ -156,15 +77,12 @@
                             type="text"
                             id="first_name"
                             name="first_name"
-                            placeholder="Enter your first name"
                             required
                             autocomplete="given-name"
                         >
 
                     </div>
 
-
-                    <!-- LAST NAME -->
 
                     <div class="form-group">
 
@@ -176,15 +94,12 @@
                             type="text"
                             id="last_name"
                             name="last_name"
-                            placeholder="Enter your last name"
                             required
                             autocomplete="family-name"
                         >
 
                     </div>
 
-
-                    <!-- DATE OF BIRTH -->
 
                     <div class="form-group">
 
@@ -202,8 +117,6 @@
                     </div>
 
 
-                    <!-- ID NUMBER -->
-
                     <div class="form-group">
 
                         <label for="id_number">
@@ -214,39 +127,35 @@
                             type="text"
                             id="id_number"
                             name="id_number"
-                            placeholder="Enter ID or passport number"
                             required
                             autocomplete="off"
                         >
 
                     </div>
 
+
                 </div>
 
-            </section>
+            </div>
 
 
 
-            <!-- =================================
-                 CONTACT INFORMATION
-            ================================== -->
+            <!-- CONTACT -->
 
-            <section class="form-section">
+            <div class="form-section">
 
                 <h2>
                     Contact Information
                 </h2>
 
-                <p class="form-section-description">
-                    We will use these details to communicate
+                <p class="form-description">
+                    These details will be used to communicate
                     with you about your application.
                 </p>
 
 
                 <div class="form-grid">
 
-
-                    <!-- EMAIL -->
 
                     <div class="form-group">
 
@@ -258,15 +167,12 @@
                             type="email"
                             id="email"
                             name="email"
-                            placeholder="example@email.com"
                             required
                             autocomplete="email"
                         >
 
                     </div>
 
-
-                    <!-- PHONE -->
 
                     <div class="form-group">
 
@@ -285,23 +191,22 @@
 
                     </div>
 
+
                 </div>
 
-            </section>
+            </div>
 
 
 
-            <!-- =================================
-                 ADDRESS
-            ================================== -->
+            <!-- ADDRESS -->
 
-            <section class="form-section">
+            <div class="form-section">
 
                 <h2>
                     Residential Address
                 </h2>
 
-                <p class="form-section-description">
+                <p class="form-description">
                     Please provide your current residential
                     address.
                 </p>
@@ -317,27 +222,24 @@
                         id="address"
                         name="address"
                         rows="4"
-                        placeholder="Enter your residential address"
                         required
                     ></textarea>
 
                 </div>
 
-            </section>
+            </div>
 
 
 
-            <!-- =================================
-                 MEMBERSHIP TYPE
-            ================================== -->
+            <!-- MEMBERSHIP -->
 
-            <section class="form-section">
+            <div class="form-section">
 
                 <h2>
                     Membership Type
                 </h2>
 
-                <p class="form-section-description">
+                <p class="form-description">
                     Select the membership category that
                     applies to you.
                 </p>
@@ -345,8 +247,6 @@
 
                 <div class="membership-options">
 
-
-                    <!-- CHILDREN -->
 
                     <label class="membership-option">
 
@@ -357,23 +257,21 @@
                             required
                         >
 
-                        <span class="membership-option-content">
+                        <span>
 
                             <strong>
                                 Children
                             </strong>
 
-                            <span>
+                            <small>
                                 Annual membership — R16
-                            </span>
+                            </small>
 
                         </span>
 
                     </label>
 
 
-
-                    <!-- ADULTS -->
 
                     <label class="membership-option">
 
@@ -384,23 +282,21 @@
                             required
                         >
 
-                        <span class="membership-option-content">
+                        <span>
 
                             <strong>
                                 Adults
                             </strong>
 
-                            <span>
+                            <small>
                                 Annual membership — R32
-                            </span>
+                            </small>
 
                         </span>
 
                     </label>
 
 
-
-                    <!-- PENSIONERS -->
 
                     <label class="membership-option">
 
@@ -411,31 +307,30 @@
                             required
                         >
 
-                        <span class="membership-option-content">
+                        <span>
 
                             <strong>
                                 Pensioners
                             </strong>
 
-                            <span>
+                            <small>
                                 Annual membership — R16
-                            </span>
+                            </small>
 
                         </span>
 
                     </label>
 
+
                 </div>
 
-            </section>
+            </div>
 
 
 
-            <!-- =================================
-                 DECLARATION
-            ================================== -->
+            <!-- DECLARATION -->
 
-            <section class="form-section declaration-section">
+            <div class="form-section declaration-section">
 
                 <h2>
                     Declaration
@@ -453,27 +348,25 @@
                     <span>
                         I confirm that the information provided
                         in this application is true and correct.
-                        I understand that my application will
-                        be reviewed by Mmakau Community Library.
+                        I understand that my application will be
+                        reviewed by Mmakau Community Library.
                     </span>
 
                 </label>
 
-            </section>
+            </div>
 
 
 
-            <!-- =================================
-                 SUBMIT
-            ================================== -->
+            <!-- SUBMIT -->
 
             <div class="form-submit">
 
                 <button
                     type="submit"
-                    class="submit-button"
+                    class="primary-button"
                 >
-                    Submit Membership Application
+                    Submit Application
                 </button>
 
                 <p>
@@ -488,25 +381,7 @@
 
     </div>
 
-</main>
+</section>
 
 
-
-<!-- =========================================
-     FOOTER
-========================================= -->
-
-<footer class="simple-footer">
-
-    <p>
-        © {{ current_year if current_year else 2026 }}
-        Mmakau Community Library.
-        All rights reserved.
-    </p>
-
-</footer>
-
-
-</body>
-
-</html>
+{% endblock %}
